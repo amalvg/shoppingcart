@@ -1,0 +1,53 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block metadescription %}
+     Registration
+{% endblock %}
+{% block title %}
+    Register
+{% endblock %}
+{% block content %}
+<form action="register" method="post" enctype="multipart/form-data" class="p-3 shadow">
+    <div class="form-group row">
+        {% csrf_token %}
+        <label class="col-sm-2 col-form-label">Enter your First Name <span style="color:red">*</span></label>
+        <div class="col-sm-10">
+            <input type="text" class="form-control" name="first_name" placeholder="First Name">
+        </div>
+        <label class="col-sm-2 col-form-label">Enter your Last Name <span style="color:red">*</span></label>
+        <div class="col-sm-10">
+            <input type="text" class="form-control" name="last_name" placeholder="Last Name">
+        </div>
+        <label class="col-sm-2 col-form-label">Enter your Username <span style="color:red">*</span></label>
+        <div class="col-sm-10">
+            <input type="text" class="form-control" name="username" placeholder="Username"><br>
+        </div>
+        <label class="col-sm-2 col-form-label">Enter your Password <span style="color:red">*</span></label>
+        <div class="col-sm-10">
+            <input type="password" class="form-control" name="password1" placeholder="Password">
+        </div>
+        <label class="col-sm-2 col-form-label">Confirm your Password <span style="color:red">*</span></label>
+        <div class="col-sm-10">
+            <input type="password" class="form-control" name="password2" placeholder="Confirm Password">
+        </div>
+        <label class="col-sm-2 col-form-label">Enter your Email Id <span style="color:red">*</span></label>
+        <div class="col-sm-10">
+            <input type="email" class="form-control" name="email" placeholder="Email ID">
+        </div>
+        <div class="form-group">
+            <div class="row">
+                <div class="col-sm-12 col-form-label">
+                    <center><button type="submit" class="btn btn-primary text-center">Submit</button></center>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row my_row_class">
+        <div class="mx-auto">
+            {% for message in messages %}
+            <h4><strong>{{message}}</strong></h4>
+            {% endfor%}
+        </div>
+    </div>
+</form>
+{% endblock %}

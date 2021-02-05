@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block metadescription %}
+     Registration
+{% endblock %}
+{% block title %}
+    Login
+{% endblock %}
+{% block content %}
+<form action="login" method="post" enctype="multipart/form-data" class="p-3 shadow mx-auto">
+    <div class="form-group row">
+        {% csrf_token %}
+        <label class="col-sm-2 col-form-label">Enter your Username <span style="color:red">*</span></label>
+        <div class="col-sm-10">
+            <input type="text" class="form-control" name="username" placeholder="Username">
+        </div>
+        <label class="col-sm-2 col-form-label">Enter your Password <span style="color:red">*</span></label>
+        <div class="col-sm-10">
+            <input type="password" class="form-control" name="password" placeholder="Password">
+        </div>
+        <div class="form-group">
+            <div class="row">
+                <div class="col-sm-12 col-form-label">
+                    <center><button type="submit" class="btn btn-primary">Login</button></center>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="mx-auto">
+            <p class="my_title">Complete the <a href="{% url 'registerapp:register' %}">registration </a> if you haven't registered </p>
+        </div>
+    </div>
+    <div class="row my_row_class">
+        <div class="mx-auto">
+            {% for message in messages %}
+            <h4><strong>{{message}}</strong></h4>
+            {% endfor%}
+        </div>
+    </div>
+
+</form>
+
+{% endblock %}
